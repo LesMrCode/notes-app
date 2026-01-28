@@ -3,14 +3,19 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import DashboardContent from "./components/DashboardContent"
+import Login from "./pages/Login"
+import Register from "./pages/Register" 
+import { Routes, Route} from "react-router-dom"
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <div>
-      <DashboardContent />
-    </div>
+    <Routes>
+      <Route path= "/login" element={<Login />} />
+      <Route path= "/register" element={<Register />} />
+      <Route path= "/dashboard" element={<DashboardContent />} /> 
+    </Routes>    
   )
 }
 

@@ -1,8 +1,8 @@
-"use client"
-
 import { useEffect } from "react"
+import { useNavigate} from "react-router-dom"
 
-const useRouter = () => ({
+
+const useNavigate = () => ({
   push: (path) => { window.location.href = path },
 })
 const useAuth = () => ({
@@ -11,7 +11,7 @@ const useAuth = () => ({
 })
 
 export default function Home() {
-  const router = useRouter()
+  const router = useNavigate()
   const { user, isLoading } = useAuth()
 
   useEffect(() => {

@@ -1,18 +1,17 @@
-"use client"
-
 import { useState } from "react"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { useNavigate} from "react-router-dom"
 
-const useRouter = () => ({
+const useNavigate = () => ({
   push: (path) => { window.location.href = path },
 })
 const useAuth = () => ({
   login: async (email, password) => { console.log("Login:", email) },
 })
 
-export default function LoginPage() {
-  const router = useRouter()
+export default function Login() {
+  const router = useNavigate()
   const { login } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
