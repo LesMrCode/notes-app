@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react"
 import NoteEditor from "./NoteEditor"
 import NoteList from "./NoteList"
-import { Button } from "../components/ui/button"
-import { Card, CardContent } from "./ui/card"
+import { Button } from "../components/ui/button.jsx"
+import { Card, CardContent } from "./ui/card.jsx"
 
 
 
