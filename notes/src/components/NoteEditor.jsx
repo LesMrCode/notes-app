@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Card, CardHeader, CardTitle, CardContent } from "../ui/card.jsx"
-import { Button } from "../ui/button.jsx"
+import { Card, CardHeader, CardTitle, CardContent } from "./ui/card.jsx"
+import { Button } from "./ui/button.jsx"
 
 export default function NoteEditor({ note, onSave, onCancel }) {
   const [title, setTitle] = useState("")

@@ -1,8 +1,8 @@
 "use client"
 
 import React from "react"
-import { Card, CardContent } from "../ui/card.jsx"
-import { Button } from "../ui/button.jsx"
+import { Card, CardContent } from "./ui/card.jsx"
+import { Button } from "./ui/button.jsx"
 
 export default function NoteList({ notes, selectedNote, onSelectNote, onDeleteNote }) {
   return (
