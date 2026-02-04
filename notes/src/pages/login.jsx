@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../components/ui/card"
+import { Button } from "../components/ui/button"
 import { useNavigate} from "react-router-dom"
 import { Link} from "react-router-dom"
 
