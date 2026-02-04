@@ -30,7 +30,7 @@ export default function NoteEditor({ note, onSave, onCancel }) {
         <CardTitle>{note ? "Edit Note" : "Create New Note"}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div>
+        <div className="note-editor">
           <label htmlFor="title" className="block text-sm font-medium mb-1">
             Title
           </label>

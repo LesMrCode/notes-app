@@ -2,16 +2,16 @@ import { useState } from "react"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { useNavigate} from "react-router-dom"
+import { Link} from "react-router-dom"
 
-const useNavigate = () => ({
-  push: (path) => { window.location.href = path },
-})
+
+
 const useAuth = () => ({
   login: async (email, password) => { console.log("Login:", email) },
 })
 
 export default function Login() {
-  const router = useNavigate()
+  const navigate = useNavigate()
   const { login } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -25,7 +25,7 @@ export default function Login() {
 
     try {
       await login(email, password)
-      router.push("/dashboard")
+      navigate("/dashboard")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed")
     } finally {
@@ -81,7 +81,7 @@ export default function Login() {
           </form>
           <p className="text-center text-sm text-muted-foreground mt-4">
             Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-primary hover:underline font-medium">
+            <Link to="/Register" className="text-primary hover:underline font-medium">
               Create one
             </Link>
           </p>

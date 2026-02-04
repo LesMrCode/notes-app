@@ -1,25 +1,22 @@
-"use client"
-
 import { useEffect } from "react"
+import { useNavigate} from "react-router-dom" 
 import DashboardContent from "../components/DashboardContent"
 
-const useRouter = () => ({
-  push: (path) => { window.location.href = path },
-})
+
 const useAuth = () => ({
-  user: { id: "user-1", email: "user@example.com" },
+  user: { id: "user-1", email: "" },
   isLoading: false,
 })
 
 export default function DashboardPage() {
-  const router = useRouter()
+  const navigate = useNavigate()
   const { user, isLoading } = useAuth()
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router.push("/login")
+      navigate("/login")
     }
-  }, [user, isLoading, router])
+  }, [user, isLoading, navigate])
 
   if (isLoading) {
     return (

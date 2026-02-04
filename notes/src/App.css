@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.header{
+background-color: #1e3a5f;
+}

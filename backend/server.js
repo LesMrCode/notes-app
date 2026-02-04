@@ -15,4 +15,4 @@ app.use('/api/notes', notesRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(process.env.SUPABASE_URL));
-console.log(`Server running on port ${PORT}`);
+console.log(`Server running on port ${PORT}`); 

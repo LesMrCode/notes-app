@@ -6,9 +6,10 @@ import NoteList from "./NoteList"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 
-// Mock useAuth and useRouter - replace with your actual implementations
+
+
 const useAuth = () => ({
-  user: { id: "user-1", email: "user@example.com" },
+  user: { id: "user-1", email: "" },
   logout: async () => {},
 })
 const useRouter = () => ({
@@ -22,7 +23,6 @@ export default function DashboardContent() {
   const [selectedNote, setSelectedNote] = useState(null)
   const [isCreating, setIsCreating] = useState(false)
 
-  // Load notes from localStorage
   useEffect(() => {
     if (user) {
       const allNotes = JSON.parse(localStorage.getItem("notes") || "[]")
@@ -88,7 +88,7 @@ export default function DashboardContent() {
       {/* Header */}
       <header className="border-b border-border bg-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-          <div>
+          <div classname="header">
             <h1 className="text-2xl font-bold text-foreground">My Notes</h1>
             <p className="text-sm text-muted-foreground">{user?.email}</p>
           </div>

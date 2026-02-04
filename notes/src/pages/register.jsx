@@ -1,18 +1,17 @@
-"use client"
-
 import { useState } from "react"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Link} from "react-router-dom"
+import { useNavigate} from "react-router-dom" 
 
-const useRouter = () => ({
-  push: (path) => { window.location.href = path },
-})
+
+
 const useAuth = () => ({
   register: async (email, password) => { console.log("Register:", email) },
 })
 
-export default function RegisterPage() {
-  const router = useRouter()
+export default function Register() {
+  const navigate = useNavigate()
   const { register } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
@@ -38,7 +37,7 @@ export default function RegisterPage() {
 
     try {
       await register(email, password)
-      router.push("/dashboard")
+      navigate("/dashboard")
     } catch (err) {
       setError(err instanceof Error ? err.message : "Registration failed")
     } finally {
@@ -108,7 +107,7 @@ export default function RegisterPage() {
           </form>
           <p className="text-center text-sm text-muted-foreground mt-4">
             Already have an account?{" "}
-            <Link href="/login" className="text-primary hover:underline font-medium">
+            <Link to="/login" className="text-primary hover:underline font-medium">
               Sign in
             </Link>
           </p>
