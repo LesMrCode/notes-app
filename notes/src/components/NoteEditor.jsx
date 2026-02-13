@@ -1,28 +1,28 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { Card, CardHeader, CardTitle, CardContent } from "./ui/card.jsx"
-import { Button } from "./ui/button.jsx"
+import { useState, useEffect } from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "./ui/card.jsx";
+import { Button } from "./ui/button.jsx";
 
 export default function NoteEditor({ note, onSave, onCancel }) {
-  const [title, setTitle] = useState("")
-  const [content, setContent] = useState("")
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
+  // Populate fields when editing an existing note
   useEffect(() => {
     if (note) {
-      setTitle(note.title)
-      setContent(note.content)
+      setTitle(note.title);
+      setContent(note.content);
     } else {
-      setTitle("")
-      setContent("")
+      setTitle("");
+      setContent("");
     }
-  }, [note])
+  }, [note]);
 
   const handleSave = () => {
+    // Only save the note if there is some content
     if (title.trim() || content.trim()) {
-      onSave(title, content)
+      onSave(title, content);
     }
-  }
+  };
 
   return (
     <Card>

@@ -1,18 +1,13 @@
-import { useState } from "react"
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../components/ui/card"
-import { Button } from "../components/ui/button"
-import { Link} from "react-router-dom"
-import { useNavigate} from "react-router-dom" 
+import { useState } from "react";
+import { supabase } from "../supabaseClient";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Link} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
-
-
-const useAuth = () => ({
-  register: async (email, password) => { console.log("Register:", email) },
-})
 
 export default function Register() {
   const navigate = useNavigate()
-  const { register } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
@@ -20,30 +15,42 @@ export default function Register() {
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setError("")
+  e.preventDefault();
+  setError("");
 
-    if (password !== confirmPassword) {
-      setError("Passwords do not match")
-      return
-    }
-
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters")
-      return
-    }
-
-    setIsLoading(true)
-
-    try {
-      await register(email, password)
-      navigate("/dashboard")
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Registration failed")
-    } finally {
-      setIsLoading(false)
-    }
+  if (password !== confirmPassword) {
+    setError("Passwords do not match");
+    return;
   }
+
+  if (password.length < 6) {
+    setError("Password must be at least 6 characters");
+    return;
+  }
+
+  setIsLoading(true);
+
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+  });
+
+  if (error) {
+    setError(error.message);
+    setIsLoading(false);
+    return;
+  }
+
+  // supabase sends a confirmation email.
+  if (!data.session) {
+    setError("Check your email to confirm your account before logging in.");
+    setIsLoading(false);
+    return;
+  }
+
+  navigate("/dashboard");
+};
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-muted">

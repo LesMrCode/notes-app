@@ -1,22 +1,17 @@
-import { useEffect } from "react"
-import { useNavigate} from "react-router-dom" 
-import DashboardContent from "../components/DashboardContent"
+import { useEffect } from "react";
+import { useNavigate} from "react-router-dom";
+import DashboardContent from "../components/DashboardContent";
 
 
-const useAuth = () => ({
-  user: { id: "user-1", email: "" },
-  isLoading: false,
-})
+useEffect(() => {
+  const checkUser = async () => {
+    const { data: { user } } = await supabase.auth.getUser();
 
-export default function DashboardPage() {
-  const navigate = useNavigate()
-  const { user, isLoading } = useAuth()
+    if (!user) navigate("/login");
+  };
 
-  useEffect(() => {
-    if (!isLoading && !user) {
-      navigate("/login")
-    }
-  }, [user, isLoading, navigate])
+  checkUser();
+}, [navigate]);
 
   if (isLoading) {
     return (
@@ -33,4 +28,4 @@ export default function DashboardPage() {
   }
 
   return <DashboardContent />
-}
+
