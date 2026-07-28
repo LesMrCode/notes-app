@@ -1,1 +1,46 @@
 @import "tailwindcss";
+
+/* Nocturne — the semantic names the app already uses, given values. */
+@theme {
+  --color-background: #161826;
+  --color-foreground: #e9e9ed;
+  --color-card: #232532;
+  --color-muted: #232532;
+  --color-muted-foreground: #b2b6ca;
+  --color-primary: #9184d9;
+  --color-border: #3f424d;
+  --color-input: #3f424d;
+  --color-destructive: #ef8a8a;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  --shadow-sm: 0 0 0 1px #3f424d;
+  --shadow-md: 0 0 0 1px #595d6c, 0 6px 18px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 0 0 1px #9397ab, 0 16px 40px rgba(0, 0, 0, 0.65);
+}
+
+@layer base {
+  html { color-scheme: dark; }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+  input, textarea { caret-color: var(--color-primary); }
+  ::placeholder { color: var(--color-muted-foreground); opacity: 0.55; }
+  ::selection { background: color-mix(in srgb, var(--color-primary) 30%, transparent); }
+}
+
+/* Nocturne signature: rules fade to transparent 48px from each end. */
+.rule {
+  height: 1px;
+  border: 0;
+  margin: 0;
+  background: linear-gradient(to right,
+    transparent, var(--color-border) 48px,
+    var(--color-border) calc(100% - 48px), transparent);
+}

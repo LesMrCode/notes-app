@@ -1,4 +1,3 @@
-import './App.css';
 import Layout from "./components/Layout.jsx";
 import  Homepage  from "./pages/Homepage.jsx";
 import DashboardContent from "./components/DashboardContent";

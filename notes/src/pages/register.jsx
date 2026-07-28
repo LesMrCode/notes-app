@@ -54,7 +54,7 @@ export default function Register() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-muted">
-      <Card className="w-full max-w-md border-primary/20">
+      <Card className="w-full max-w-[400px] shadow-md">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl">Create your account</CardTitle>
           <CardDescription>Sign up to start creating and managing your private notes</CardDescription>
