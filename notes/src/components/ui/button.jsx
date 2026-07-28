@@ -8,12 +8,13 @@ export function Button({
   ...props
 }) {
   const baseClasses =
-    "inline-flex items-center justify-center font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-md";
+    "inline-flex items-center justify-center gap-1.5 font-medium transition-colors rounded-md border border-transparent bg-transparent disabled:opacity-45 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-primary focus-visible:outline-offset-2";
 
+  // Primary is OUTLINED: accent border + accent text, filled only on hover/active.
   const variants = {
-    default: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
-    outline: "border border-gray-300 bg-white text-gray-900 hover:bg-gray-50 focus:ring-gray-500",
-    ghost: "bg-transparent text-gray-900 hover:bg-gray-100 focus:ring-gray-500",
+    default: "text-primary border-primary hover:bg-primary/12 active:bg-primary/22",
+    outline: "text-foreground border-border hover:bg-foreground/8 active:bg-foreground/14",
+    ghost: "text-primary hover:bg-primary/10 active:bg-primary/18",
   };
 
   const sizes = {

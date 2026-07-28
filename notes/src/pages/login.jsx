@@ -34,7 +34,7 @@ export default function Login() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-background to-muted px-4">
-      <Card className="w-full max-w-md border-primary/20 shadow-lg">
+      <Card className="w-full max-w-[400px] shadow-md">
         <CardHeader className="space-y-2 text-center">
           <CardTitle className="text-2xl font-semibold">Sign in to your notes</CardTitle>
           <CardDescription className="text-sm text-muted-foreground">
@@ -63,8 +63,17 @@ export default function Login() {
               />
             </div>
 
-            <div className="space-y-1 relative">
-              <label htmlFor="password" className="text-sm font-medium">Password</label>
+            <div className="space-y-1">
+              <div className="flex items-baseline justify-between">
+                <label htmlFor="password" className="text-sm font-medium">Password</label>
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="text-xs text-primary hover:underline"
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
@@ -74,13 +83,6 @@ export default function Login() {
                 className="w-full px-3 py-2 border border-input rounded-md bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
                 required
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-muted-foreground hover:text-foreground"
-              >
-                {showPassword ? "Hide" : "Show"}
-              </button>
             </div>
 
             <Button type="submit" disabled={isLoading} className="w-full">
